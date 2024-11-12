@@ -3,6 +3,9 @@
     Created on : Sep 15, 2023, 8:14:39 AM
     Author     : KHOACNTT
 --%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="model.SanPham"%>
+<%@page import="java.text.DecimalFormat"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!--nhung noi dung header.jsp-->
@@ -21,18 +24,26 @@
     <div class="row">       
         <div class="col-sm-12">
             <div class="row">   
+                <%
+                    DecimalFormat fmt = new DecimalFormat("#,##0 vnđ");
+                    ArrayList<SanPham> dsSp = (ArrayList<SanPham>) request.getAttribute("dsSanPham");
+                    if (dsSp != null) {
+                        for (SanPham s : dsSp) {
+
+
+                %>
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="card mb-2">
                         <div class="card-header">
-                            Product name
+                            <%=s.getTenSP()%>
                         </div>
                         <div class="card-body">
-                            <img class="card-img" src="assets/images/products/shoes.jpg" alt="Card image cap">                         
+                            <img class="card-img" src="assets/images/products/<%=s.getHinh()%>" alt="Card image cap">                         
                         </div>
                         <div class="card-footer">
                             <div class="row">
                                 <div class="col">
-                                    <p class="btn btn-danger btn-block">1.990.000 đ</p>
+                                    <p class="btn btn-danger btn-block"><%=fmt.format(s.getDonGia())%></p>
                                 </div>
                                 <div class="col">
                                     <a href="#" class="btn btn-success btn-block">Add to cart</a>
@@ -41,46 +52,10 @@
                         </div>
                     </div>              
                 </div>
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card mb-2">
-                        <div class="card-header">
-                            Product name
-                        </div>
-                        <div class="card-body">
-                            <img class="card-img" src="assets/images/products/shoes.jpg" alt="Card image cap">                         
-                        </div>
-                        <div class="card-footer">
-                            <div class="row">
-                                <div class="col">
-                                    <p class="btn btn-danger btn-block">1.990.000 đ</p>
-                                </div>
-                                <div class="col">
-                                    <a href="#" class="btn btn-success btn-block">Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>              
-                </div>
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card mb-2">
-                        <div class="card-header">
-                            Product name
-                        </div>
-                        <div class="card-body">
-                            <img class="card-img" src="assets/images/products/shoes.jpg" alt="Card image cap">                          
-                        </div>
-                        <div class="card-footer">
-                            <div class="row">
-                                <div class="col">
-                                    <p class="btn btn-danger btn-block">1.990.000 đ</p>
-                                </div>
-                                <div class="col">
-                                    <a href="#" class="btn btn-success btn-block">Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>                      
-                </div>             
+                       <%
+                           }
+                           }
+                       %>      
             </div>                       
         </div>
 
